@@ -13,9 +13,10 @@ namespace petShop.Views
 {
     public partial class frmPrincipal : Form
     {
-        public frmPrincipal()
+        public frmPrincipal(usuarios user)
         {
             InitializeComponent();
+            lblNombreUsuario.Text = user.nombre.ToUpper();
         }
 
         private void btnCerrar_Click(object sender, EventArgs e)
@@ -128,6 +129,13 @@ namespace petShop.Views
                     db.SaveChanges();
                 }
             }
+        }
+
+        private void btnCerrarSesion_Click(object sender, EventArgs e)
+        {
+            frmLogin frm = new frmLogin();
+            frm.Show();
+            this.Close();
         }
     }
 }

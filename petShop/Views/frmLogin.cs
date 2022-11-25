@@ -26,7 +26,7 @@ namespace petShop.Views
             Application.Exit();
         }
 
-        private void btnIniciarSesion_Click(object sender, EventArgs e)
+        void loguearUsuario()
         {
             usuarios usuarioLogin = new usuarios();
             usuarioLogin.correo = txtCorreo.Text;
@@ -41,7 +41,7 @@ namespace petShop.Views
 
                 if (usuarioLogin != null)
                 {
-                    frmPrincipal frm = new frmPrincipal();
+                    frmPrincipal frm = new frmPrincipal(usuarioLogin);
                     frm.Show();
                     this.Visible = false;
                 }
@@ -49,6 +49,51 @@ namespace petShop.Views
                 {
                     MessageBox.Show("Falló con éxito",
                     "Usuario NO encontrado!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
+
+        private void btnIniciarSesion_Click(object sender, EventArgs e)
+        {
+            loguearUsuario();
+        }
+
+        private void txtCorreo_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if ((int)e.KeyChar == (int)Keys.Enter)
+            {
+                if (txtCorreo.Text == "" || txtPass.Text == "")
+                {
+                    MessageBox.Show(
+                        "Asegurese de ingresar su correo y su contraseña!",
+                        "Aún faltan datos..",
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Warning
+                        );
+                }
+                else
+                {
+                    loguearUsuario();
+                }
+            }
+        }
+
+        private void txtPass_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if ((int)e.KeyChar == (int)Keys.Enter)
+            {
+                if (txtCorreo.Text == "" || txtPass.Text == "")
+                {
+                    MessageBox.Show(
+                        "Asegurese de ingresar su correo y su contraseña!",
+                        "Aún faltan datos..",
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Warning
+                        );
+                }
+                else
+                {
+                    loguearUsuario();
                 }
             }
         }
