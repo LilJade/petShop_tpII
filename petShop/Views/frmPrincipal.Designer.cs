@@ -35,6 +35,9 @@
             this.btnMinimizar = new System.Windows.Forms.PictureBox();
             this.btnCerrar = new System.Windows.Forms.PictureBox();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.label11 = new System.Windows.Forms.Label();
+            this.lblProdQuitar = new System.Windows.Forms.Label();
+            this.btnQuitarProd = new System.Windows.Forms.Button();
             this.panel8 = new System.Windows.Forms.Panel();
             this.btnVender = new System.Windows.Forms.Button();
             this.label8 = new System.Windows.Forms.Label();
@@ -154,6 +157,9 @@
             this.panel2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel2.Controls.Add(this.label11);
+            this.panel2.Controls.Add(this.lblProdQuitar);
+            this.panel2.Controls.Add(this.btnQuitarProd);
             this.panel2.Controls.Add(this.panel8);
             this.panel2.Controls.Add(this.panel7);
             this.panel2.Controls.Add(this.panel6);
@@ -163,6 +169,45 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(1162, 744);
             this.panel2.TabIndex = 1;
+            // 
+            // label11
+            // 
+            this.label11.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.label11.AutoSize = true;
+            this.label11.Font = new System.Drawing.Font("Microsoft YaHei", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label11.Location = new System.Drawing.Point(740, 648);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(91, 22);
+            this.label11.TabIndex = 13;
+            this.label11.Text = "Producto:";
+            // 
+            // lblProdQuitar
+            // 
+            this.lblProdQuitar.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblProdQuitar.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.lblProdQuitar.Font = new System.Drawing.Font("Microsoft YaHei", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblProdQuitar.Location = new System.Drawing.Point(837, 641);
+            this.lblProdQuitar.Name = "lblProdQuitar";
+            this.lblProdQuitar.Size = new System.Drawing.Size(317, 35);
+            this.lblProdQuitar.TabIndex = 14;
+            this.lblProdQuitar.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // btnQuitarProd
+            // 
+            this.btnQuitarProd.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btnQuitarProd.BackColor = System.Drawing.Color.Red;
+            this.btnQuitarProd.Enabled = false;
+            this.btnQuitarProd.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnQuitarProd.Font = new System.Drawing.Font("Microsoft YaHei", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnQuitarProd.ForeColor = System.Drawing.Color.White;
+            this.btnQuitarProd.Location = new System.Drawing.Point(3, 641);
+            this.btnQuitarProd.Name = "btnQuitarProd";
+            this.btnQuitarProd.Size = new System.Drawing.Size(731, 35);
+            this.btnQuitarProd.TabIndex = 13;
+            this.btnQuitarProd.Text = "QUITAR PRODUCTO DE LA LISTA";
+            this.btnQuitarProd.UseVisualStyleBackColor = false;
+            this.btnQuitarProd.Click += new System.EventHandler(this.btnQuitarProd_Click);
             // 
             // panel8
             // 
@@ -243,6 +288,7 @@
             this.txtCantidad.Name = "txtCantidad";
             this.txtCantidad.Size = new System.Drawing.Size(621, 35);
             this.txtCantidad.TabIndex = 10;
+            this.txtCantidad.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtCantidad_KeyPress);
             // 
             // label2
             // 
@@ -442,8 +488,9 @@
             this.dgvDetalleVentas.Location = new System.Drawing.Point(7, 277);
             this.dgvDetalleVentas.Name = "dgvDetalleVentas";
             this.dgvDetalleVentas.ReadOnly = true;
-            this.dgvDetalleVentas.Size = new System.Drawing.Size(1149, 399);
+            this.dgvDetalleVentas.Size = new System.Drawing.Size(1149, 358);
             this.dgvDetalleVentas.TabIndex = 13;
+            this.dgvDetalleVentas.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDetalleVentas_CellClick);
             // 
             // IdProducto
             // 
@@ -637,11 +684,13 @@
             this.Name = "frmPrincipal";
             this.Text = "frmPrincipal";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.Load += new System.EventHandler(this.frmPrincipal_Load);
             this.panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnMinimizar)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnCerrar)).EndInit();
             this.panel2.ResumeLayout(false);
+            this.panel2.PerformLayout();
             this.panel8.ResumeLayout(false);
             this.panel8.PerformLayout();
             this.panel7.ResumeLayout(false);
@@ -704,5 +753,8 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Precio;
         private System.Windows.Forms.DataGridViewTextBoxColumn Cantidad;
         private System.Windows.Forms.DataGridViewTextBoxColumn Subtotal;
+        private System.Windows.Forms.Button btnQuitarProd;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.Label lblProdQuitar;
     }
 }

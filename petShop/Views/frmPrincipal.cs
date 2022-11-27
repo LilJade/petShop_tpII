@@ -18,15 +18,9 @@ namespace petShop.Views
             InitializeComponent();
             lblNombreUsuario.Text = user.nombre.ToUpper();
         }
-
-        private void btnCerrar_Click(object sender, EventArgs e)
+        private void frmPrincipal_Load(object sender, EventArgs e)
         {
-            Application.Exit();
-        }
-
-        private void btnMinimizar_Click(object sender, EventArgs e)
-        {
-            this.WindowState = FormWindowState.Minimized;
+            txtBuscador.Focus();
         }
 
         productos productoBuscado = new productos();
@@ -66,6 +60,8 @@ namespace petShop.Views
                         lblNombreProducto.Text = productoBuscado.nombre;
                         lblStockProducto.Text = productoBuscado.stock.ToString();
                         lblPrecioProducto.Text = productoBuscado.precio.ToString();
+
+                        txtCantidad.Focus();
                     }
                 }
                 //SI EL RESULTADO DE LA CONSULTA ES
@@ -73,28 +69,17 @@ namespace petShop.Views
                 else
                 {
                     MessageBox.Show(
-                        "Este producto no existe", 
-                        "Producto no encontrado", 
-                        MessageBoxButtons.OK, 
+                        "Este producto no existe",
+                        "Producto no encontrado",
+                        MessageBoxButtons.OK,
                         MessageBoxIcon.Error);
                 }
             }
-        }
-
-        public void AgregarDetalleVenta()
-        {
-            if (productoExiste(productoBuscado) == false)
+            else if (e.KeyChar >= 32 && e.KeyChar <= 47 || e.KeyChar >= 58 && e.KeyChar <= 255)
             {
-                dgvDetalleVentas.Rows.Add(
-                                productoBuscado.idProducto,
-                                productoBuscado.nombre,
-                                productoBuscado.precio,
-                                txtCantidad.Text,
-                                (productoBuscado.precio * int.Parse(txtCantidad.Text))
-                                );
-
-                calcularTotal();
-
+                MessageBox.Show("Solo numeros", "Alerta", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                e.Handled = true;
+                return;
             }
         }
 
@@ -120,6 +105,23 @@ namespace petShop.Views
             return false;
         }
 
+        public void AgregarDetalleVenta()
+        {
+            if (productoExiste(productoBuscado) == false)
+            {
+                dgvDetalleVentas.Rows.Add(
+                                productoBuscado.idProducto,
+                                productoBuscado.nombre,
+                                productoBuscado.precio,
+                                txtCantidad.Text,
+                                (productoBuscado.precio * int.Parse(txtCantidad.Text))
+                                );
+
+                calcularTotal();
+
+            }
+        }
+
         void calcularTotal()
         {
             decimal newTotal = 0;
@@ -130,6 +132,35 @@ namespace petShop.Views
             }
 
             lblTotalVenta.Text = newTotal.ToString();
+        }
+
+        void limpiarCamposAlAgregar()
+        {
+            txtBuscador.Text = "";
+            lblIdProducto.Text = "";
+            lblNombreProducto.Text = "";
+            lblPrecioProducto.Text = "";
+            lblStockProducto.Text = "";
+            txtCantidad.Text = "";
+
+            txtBuscador.Focus();
+        }
+
+        private void btnAgregarProd_Click(object sender, EventArgs e)
+        {
+            if (int.Parse(txtCantidad.Text) > int.Parse(lblStockProducto.Text))
+            {
+                MessageBox.Show(
+                                "No se pueden vender más de " + lblStockProducto.Text + " productos",
+                                "Producto con POCAS existencias!",
+                                MessageBoxButtons.OK,
+                                MessageBoxIcon.Error);
+            }
+            else
+            {
+                AgregarDetalleVenta();
+                limpiarCamposAlAgregar();
+            }
         }
 
         private void btnVender_Click(object sender, EventArgs e)
@@ -173,6 +204,14 @@ namespace petShop.Views
             }
         }
 
+        private void btnCerrar_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
+        private void btnMinimizar_Click(object sender, EventArgs e)
+        {
+            this.WindowState = FormWindowState.Minimized;
+        }
         private void btnCerrarSesion_Click(object sender, EventArgs e)
         {
             frmLogin frm = new frmLogin();
@@ -180,9 +219,43 @@ namespace petShop.Views
             this.Close();
         }
 
-        private void btnAgregarProd_Click(object sender, EventArgs e)
+        private void btnQuitarProd_Click(object sender, EventArgs e)
         {
-            AgregarDetalleVenta();
+            dgvDetalleVentas.Rows.Remove(dgvDetalleVentas.CurrentRow);
+            calcularTotal();
+            this.Enabled = false;
+        }
+
+        private void dgvDetalleVentas_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            btnQuitarProd.Enabled = true;
+            lblProdQuitar.Text = dgvDetalleVentas.CurrentRow.Cells[1].Value.ToString();
+        }
+
+        private void txtCantidad_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if ((int)e.KeyChar == (int)Keys.Enter)
+            {
+                if (int.Parse(txtCantidad.Text) > int.Parse(lblStockProducto.Text))
+                {
+                    MessageBox.Show(
+                                    "No se pueden vender más de " + lblStockProducto.Text + " productos",
+                                    "Producto con POCAS existencias!",
+                                    MessageBoxButtons.OK,
+                                    MessageBoxIcon.Error);
+                }
+                else
+                {
+                    AgregarDetalleVenta();
+                    limpiarCamposAlAgregar();
+                }
+            }
+            else if (e.KeyChar >= 32 && e.KeyChar <= 47 || e.KeyChar >= 58 && e.KeyChar <= 255)
+            {
+                MessageBox.Show("Solo numeros", "Alerta", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                e.Handled = true;
+                return;
+            }
         }
     }
 }
