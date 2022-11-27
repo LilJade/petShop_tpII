@@ -34,6 +34,8 @@ namespace petShop.Views
         {
             if ((int)e.KeyChar == (int)Keys.Enter)
             {
+                //BUSCO EL PRODUCTO EN LA BASE DE DATOS
+                //MEDIANTE EL ID QUE EL USUARIO ESCRIBE
                 using (petShopEntities db = new petShopEntities())
                 {
                     int idProducto = int.Parse(txtBuscador.Text);
@@ -42,13 +44,32 @@ namespace petShop.Views
                         .FirstOrDefault();
                 }
 
+                //ME ASEGURO QUE EL RESULTADO DE LA CONSULTA
+                //NO SEA == NULL
                 if (productoBuscado != null)
                 {
-                    lblIdProducto.Text = productoBuscado.idProducto.ToString();
-                    lblNombreProducto.Text = productoBuscado.nombre;
-                    lblStockProducto.Text = productoBuscado.stock.ToString();
-                    lblPrecioProducto.Text = productoBuscado.precio.ToString();
+                    //SI EL ESTADO DEL PRODUCTO ES IGUAL A 0
+                    //ENTONCES EL PRODUCTO ESTÁ DESACTIVADO
+                    if (productoBuscado.estado == 0)
+                    {
+                        MessageBox.Show(
+                                "Este producto está agotado en existencias! :/",
+                                "Producto AGOTADO",
+                                MessageBoxButtons.OK,
+                                MessageBoxIcon.Error);
+                    }
+                    //EN CASO CONTRARIO EL PRODUCTO SÍ
+                    //ESTÁ DISPONIBLE
+                    else
+                    {
+                        lblIdProducto.Text = productoBuscado.idProducto.ToString();
+                        lblNombreProducto.Text = productoBuscado.nombre;
+                        lblStockProducto.Text = productoBuscado.stock.ToString();
+                        lblPrecioProducto.Text = productoBuscado.precio.ToString();
+                    }
                 }
+                //SI EL RESULTADO DE LA CONSULTA ES
+                //IGUAL A NULL MUESTRO QUE ESE ID NO EXISTE
                 else
                 {
                     MessageBox.Show(
@@ -60,34 +81,55 @@ namespace petShop.Views
             }
         }
 
-        private void button1_Click(object sender, EventArgs e)
-        {
-            AgregarDetalleVenta();
-        }
-
         public void AgregarDetalleVenta()
         {
-            dgvDetalleVentas.Rows.Add(
-                productoBuscado.idProducto, 
-                productoBuscado.nombre, 
-                productoBuscado.precio, 
-                txtCantidad.Text, 
-                (productoBuscado.precio * int.Parse(txtCantidad.Text))
-                );
-
-            decimal total;
-            decimal nuevoTotal = 0;
-
-            for (int fila = 0; fila < dgvDetalleVentas.Rows.Count - 1; fila++)
+            if (productoExiste(productoBuscado) == false)
             {
-                string valor = dgvDetalleVentas.Rows[fila].Cells[4].Value.ToString();
-                total = decimal.Parse(valor);
+                dgvDetalleVentas.Rows.Add(
+                                productoBuscado.idProducto,
+                                productoBuscado.nombre,
+                                productoBuscado.precio,
+                                txtCantidad.Text,
+                                (productoBuscado.precio * int.Parse(txtCantidad.Text))
+                                );
 
-                nuevoTotal += total;
+                calcularTotal();
 
             }
+        }
 
-            lblTotalVenta.Text = nuevoTotal.ToString();
+        Boolean productoExiste(productos producto)
+        {
+            foreach (DataGridViewRow row in dgvDetalleVentas.Rows)
+            {
+                int id = int.Parse(row.Cells[0].Value.ToString());
+
+                if (id == producto.idProducto)
+                {
+                    int cantidadActual = int.Parse(row.Cells[3].Value.ToString());
+                    int nuevaCantidad = int.Parse(txtCantidad.Text) + cantidadActual;
+                    row.Cells[3].Value = nuevaCantidad;
+                    row.Cells[4].Value = (producto.precio * nuevaCantidad);
+
+                    calcularTotal();
+
+                    return true;
+                }
+            }
+
+            return false;
+        }
+
+        void calcularTotal()
+        {
+            decimal newTotal = 0;
+
+            foreach (DataGridViewRow row in dgvDetalleVentas.Rows)
+            {
+                newTotal += decimal.Parse(row.Cells[4].Value.ToString());
+            }
+
+            lblTotalVenta.Text = newTotal.ToString();
         }
 
         private void btnVender_Click(object sender, EventArgs e)
@@ -136,6 +178,11 @@ namespace petShop.Views
             frmLogin frm = new frmLogin();
             frm.Show();
             this.Close();
+        }
+
+        private void btnAgregarProd_Click(object sender, EventArgs e)
+        {
+            AgregarDetalleVenta();
         }
     }
 }

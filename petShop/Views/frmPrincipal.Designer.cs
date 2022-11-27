@@ -52,11 +52,17 @@
             this.label3 = new System.Windows.Forms.Label();
             this.lblPrecioProducto = new System.Windows.Forms.Label();
             this.panel6 = new System.Windows.Forms.Panel();
+            this.btnBuscarProdMan = new System.Windows.Forms.Button();
             this.txtBuscador = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.panel5 = new System.Windows.Forms.Panel();
             this.label10 = new System.Windows.Forms.Label();
             this.dgvDetalleVentas = new System.Windows.Forms.DataGridView();
+            this.IdProducto = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Producto = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Precio = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Cantidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Subtotal = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panelMod = new System.Windows.Forms.Panel();
             this.panel4 = new System.Windows.Forms.Panel();
             this.btnCerrarSesion = new System.Windows.Forms.Button();
@@ -67,12 +73,6 @@
             this.panel3 = new System.Windows.Forms.Panel();
             this.lblNombreUsuario = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
-            this.btnBuscarProdMan = new System.Windows.Forms.Button();
-            this.IdProducto = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Producto = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Precio = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Cantidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Subtotal = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnMinimizar)).BeginInit();
@@ -205,13 +205,11 @@
             // 
             // lblTotalVenta
             // 
-            this.lblTotalVenta.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.lblTotalVenta.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lblTotalVenta.Font = new System.Drawing.Font("Microsoft YaHei", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTotalVenta.Location = new System.Drawing.Point(249, 15);
             this.lblTotalVenta.Name = "lblTotalVenta";
-            this.lblTotalVenta.Size = new System.Drawing.Size(304, 28);
+            this.lblTotalVenta.Size = new System.Drawing.Size(421, 28);
             this.lblTotalVenta.TabIndex = 15;
             // 
             // panel7
@@ -322,7 +320,7 @@
             this.btnAgregarProd.TabIndex = 12;
             this.btnAgregarProd.Text = "AGREGAR";
             this.btnAgregarProd.UseVisualStyleBackColor = false;
-            this.btnAgregarProd.Click += new System.EventHandler(this.button1_Click);
+            this.btnAgregarProd.Click += new System.EventHandler(this.btnAgregarProd_Click);
             // 
             // label5
             // 
@@ -367,6 +365,20 @@
             this.panel6.Name = "panel6";
             this.panel6.Size = new System.Drawing.Size(1147, 90);
             this.panel6.TabIndex = 18;
+            // 
+            // btnBuscarProdMan
+            // 
+            this.btnBuscarProdMan.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnBuscarProdMan.BackColor = System.Drawing.Color.Green;
+            this.btnBuscarProdMan.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnBuscarProdMan.Font = new System.Drawing.Font("Microsoft YaHei", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnBuscarProdMan.ForeColor = System.Drawing.Color.White;
+            this.btnBuscarProdMan.Location = new System.Drawing.Point(830, 3);
+            this.btnBuscarProdMan.Name = "btnBuscarProdMan";
+            this.btnBuscarProdMan.Size = new System.Drawing.Size(313, 84);
+            this.btnBuscarProdMan.TabIndex = 13;
+            this.btnBuscarProdMan.Text = "BUSCAR PRODUCTO MANUALMENTE";
+            this.btnBuscarProdMan.UseVisualStyleBackColor = false;
             // 
             // txtBuscador
             // 
@@ -432,6 +444,39 @@
             this.dgvDetalleVentas.ReadOnly = true;
             this.dgvDetalleVentas.Size = new System.Drawing.Size(1149, 399);
             this.dgvDetalleVentas.TabIndex = 13;
+            // 
+            // IdProducto
+            // 
+            this.IdProducto.HeaderText = "IdProducto";
+            this.IdProducto.Name = "IdProducto";
+            this.IdProducto.ReadOnly = true;
+            // 
+            // Producto
+            // 
+            this.Producto.HeaderText = "Producto";
+            this.Producto.Name = "Producto";
+            this.Producto.ReadOnly = true;
+            this.Producto.Width = 600;
+            // 
+            // Precio
+            // 
+            this.Precio.HeaderText = "Precio";
+            this.Precio.Name = "Precio";
+            this.Precio.ReadOnly = true;
+            this.Precio.Width = 200;
+            // 
+            // Cantidad
+            // 
+            this.Cantidad.HeaderText = "Cantidad";
+            this.Cantidad.Name = "Cantidad";
+            this.Cantidad.ReadOnly = true;
+            // 
+            // Subtotal
+            // 
+            this.Subtotal.HeaderText = "Subtotal";
+            this.Subtotal.Name = "Subtotal";
+            this.Subtotal.ReadOnly = true;
+            this.Subtotal.Width = 200;
             // 
             // panelMod
             // 
@@ -579,53 +624,6 @@
             this.label9.TabIndex = 17;
             this.label9.Text = "BIENVENIDO";
             this.label9.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // btnBuscarProdMan
-            // 
-            this.btnBuscarProdMan.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnBuscarProdMan.BackColor = System.Drawing.Color.Green;
-            this.btnBuscarProdMan.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnBuscarProdMan.Font = new System.Drawing.Font("Microsoft YaHei", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnBuscarProdMan.ForeColor = System.Drawing.Color.White;
-            this.btnBuscarProdMan.Location = new System.Drawing.Point(830, 3);
-            this.btnBuscarProdMan.Name = "btnBuscarProdMan";
-            this.btnBuscarProdMan.Size = new System.Drawing.Size(313, 84);
-            this.btnBuscarProdMan.TabIndex = 13;
-            this.btnBuscarProdMan.Text = "BUSCAR PRODUCTO MANUALMENTE";
-            this.btnBuscarProdMan.UseVisualStyleBackColor = false;
-            // 
-            // IdProducto
-            // 
-            this.IdProducto.HeaderText = "IdProducto";
-            this.IdProducto.Name = "IdProducto";
-            this.IdProducto.ReadOnly = true;
-            // 
-            // Producto
-            // 
-            this.Producto.HeaderText = "Producto";
-            this.Producto.Name = "Producto";
-            this.Producto.ReadOnly = true;
-            this.Producto.Width = 600;
-            // 
-            // Precio
-            // 
-            this.Precio.HeaderText = "Precio";
-            this.Precio.Name = "Precio";
-            this.Precio.ReadOnly = true;
-            this.Precio.Width = 200;
-            // 
-            // Cantidad
-            // 
-            this.Cantidad.HeaderText = "Cantidad";
-            this.Cantidad.Name = "Cantidad";
-            this.Cantidad.ReadOnly = true;
-            // 
-            // Subtotal
-            // 
-            this.Subtotal.HeaderText = "Subtotal";
-            this.Subtotal.Name = "Subtotal";
-            this.Subtotal.ReadOnly = true;
-            this.Subtotal.Width = 200;
             // 
             // frmPrincipal
             // 
