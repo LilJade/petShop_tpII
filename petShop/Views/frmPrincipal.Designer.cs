@@ -425,6 +425,7 @@
             this.btnBuscarProdMan.TabIndex = 13;
             this.btnBuscarProdMan.Text = "BUSCAR PRODUCTO MANUALMENTE";
             this.btnBuscarProdMan.UseVisualStyleBackColor = false;
+            this.btnBuscarProdMan.Click += new System.EventHandler(this.btnBuscarProdMan_Click);
             // 
             // txtBuscador
             // 
@@ -608,6 +609,7 @@
             this.button3.Text = "Categorías Config";
             this.button3.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.button3.UseVisualStyleBackColor = false;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
             // pictureBox2
             // 
@@ -714,18 +716,14 @@
         private System.Windows.Forms.PictureBox btnCerrar;
         private System.Windows.Forms.PictureBox btnMinimizar;
         private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.Label lblIdProducto;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Label lblStockProducto;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label lblNombreProducto;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox txtBuscador;
         private System.Windows.Forms.Button btnAgregarProd;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox txtCantidad;
-        private System.Windows.Forms.Label lblPrecioProducto;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.DataGridView dgvDetalleVentas;
         private System.Windows.Forms.Button btnVender;
@@ -757,5 +755,9 @@
         private System.Windows.Forms.Button btnQuitarProd;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Label lblProdQuitar;
+        public System.Windows.Forms.Label lblIdProducto;
+        public System.Windows.Forms.Label lblStockProducto;
+        public System.Windows.Forms.Label lblNombreProducto;
+        public System.Windows.Forms.Label lblPrecioProducto;
     }
 }

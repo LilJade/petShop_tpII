@@ -16,107 +16,114 @@ namespace petShop.Views
         public frmCategoriaCrud()
         {
             InitializeComponent();
-
-            selectProductos();
-            
+            selectCategorias();
+            limpiarCampos();
         }
 
-        public void selectProductos()
+        public void selectCategorias()
         {
-            //LIMPIAR FILAS DE UN DATAGRIDVIEW
-            dgvLista.Rows.Clear();
-
+            dgvListaCateg.Rows.Clear();
             using (petShopEntities db = new petShopEntities())
             {
-                List<productos> lista = db.productos.ToList();
+                List<categorias> listaCategorías = (from c in db.categorias
+                                                    select c).ToList();
 
-                foreach (var item in lista)
+                foreach (var c in listaCategorías)
                 {
-                    string estadoActual = "";
-                    if (item.estado == 0)
-                    {
-                        estadoActual = "INACTIVO";
-                    }
-                    if (item.estado == 1)
-                    {
-                        estadoActual = "ACTIVO";
-                    }
-                    dgvLista.Rows.Add(item.idProducto, item.nombre, estadoActual
-                );
+                    dgvListaCateg.Rows.Add(c.idCategoria, c.nombre);
                 }
             }
         }
 
-        private void dgvLista_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        void limpiarCampos()
         {
-            txtIdProd.Text = dgvLista.CurrentRow.Cells[0].Value.ToString();
-            txtNombreProd.Text = dgvLista.CurrentRow.Cells[1].Value.ToString();
-            txtEstadoProd.Text = dgvLista.CurrentRow.Cells[2].Value.ToString();
+            lblIdCateg.Text = "";
+            txtNombreCateg.Text = "";
+
+            txtNombreCateg.Enabled = false;
+            btnGuardarNuevaCateg.Enabled = false;
+            btnGuardarCambiosCateg.Enabled = false;
+            btnEditarCateg.Enabled = false;
+            btnCancelar.Enabled = false;
+            btnNuevaCateg.Enabled = true;
+
+            btnGuardarNuevaCateg.BackColor = Color.Gray;
+            btnGuardarCambiosCateg.BackColor = Color.Gray;
+            btnEditarCateg.BackColor = Color.Gray;
+            btnCancelar.BackColor = Color.Gray;
+            btnNuevaCateg.BackColor = Color.Lime;
         }
 
-        private void btnActivarProd_Click(object sender, EventArgs e)
+        private void dgvListaCategorías_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            lblIdCateg.Text = dgvListaCateg.CurrentRow.Cells[0].Value.ToString();
+            txtNombreCateg.Text = dgvListaCateg.CurrentRow.Cells[1].Value.ToString();
+
+            btnNuevaCateg.Enabled = false;
+            btnNuevaCateg.BackColor = Color.Gray;
+            btnEditarCateg.Enabled = true;
+            btnEditarCateg.BackColor = Color.Orange;
+        }
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void btnNuevaCateg_Click(object sender, EventArgs e)
+        {
+            txtNombreCateg.Enabled = true;
+            btnGuardarNuevaCateg.Enabled = true;
+            btnCancelar.Enabled = true;
+            btnGuardarNuevaCateg.BackColor = Color.Lime;
+            btnNuevaCateg.BackColor = Color.Gray;
+            btnCancelar.BackColor = Color.Red;
+        }
+
+        private void btnGuardarNuevaCateg_Click(object sender, EventArgs e)
         {
             using (petShopEntities db = new petShopEntities())
             {
-                int idProducto = int.Parse(txtIdProd.Text);
-                productos prodActivar = (from p in db.productos
-                                         where p.idProducto == idProducto
-                                         select p).FirstOrDefault();
+                categorias categoriaNueva = new categorias();
+                categoriaNueva.nombre = txtNombreCateg.Text;
 
-                prodActivar.estado = 1;
-
-                db.Entry(prodActivar);
+                db.categorias.Add(categoriaNueva);
                 db.SaveChanges();
             }
 
-            txtIdProd.Text = "";
-            txtNombreProd.Text = "";
-            txtEstadoProd.Text = "";
-            selectProductos();
+            limpiarCampos();
+            selectCategorias();
         }
 
-        private void btnDesactivarProd_Click(object sender, EventArgs e)
+        private void button1_Click(object sender, EventArgs e)
+        {
+            limpiarCampos();
+        }
+
+        private void btnEditarCateg_Click(object sender, EventArgs e)
+        {
+            txtNombreCateg.Enabled = true;
+            btnGuardarCambiosCateg.Enabled = true;
+            btnCancelar.Enabled = true;
+
+            btnEditarCateg.BackColor = Color.Gray;
+            btnGuardarCambiosCateg.BackColor = Color.Lime;
+            btnCancelar.BackColor = Color.Red;
+        }
+
+        private void btnGuardarCambiosCateg_Click(object sender, EventArgs e)
         {
             using (petShopEntities db = new petShopEntities())
             {
-                int idProducto = int.Parse(txtIdProd.Text);
-                productos prodActivar = (from p in db.productos
-                                         where p.idProducto == idProducto
-                                         select p).FirstOrDefault();
+                categorias categoriaEditada = new categorias();
+                categoriaEditada.nombre = txtNombreCateg.Text;
 
-                prodActivar.estado = 0;
-
-                db.Entry(prodActivar);
+                db.Entry(categoriaEditada);
                 db.SaveChanges();
             }
 
-            txtIdProd.Text = "";
-            txtNombreProd.Text = "";
-            txtEstadoProd.Text = "";
-            selectProductos();
+            limpiarCampos();
+            selectCategorias();
         }
     }
 }
-
-/*using (petShopEntities db = new petShopEntities())
-            {
-                List<productos> lista = (from p in db.productos
-                                         where p.estado == 1
-                                         select p).ToList();
-
-                foreach (var item in lista)
-                {
-                    string estadoActual = "";
-                    if (item.estado == 0)
-                    {
-                        estadoActual = "INACTIVO";
-                    }
-                    if (item.estado == 1)
-                    {
-                        estadoActual = "ACTIVO";
-                    }
-                    dgvLista2.Rows.Add(item.idProducto, item.nombre, item.precio, estadoActual
-                );
-                }
-            }*/
-

@@ -18,6 +18,7 @@ namespace petShop.Views
             InitializeComponent();
             lblNombreUsuario.Text = user.nombre.ToUpper();
         }
+
         private void frmPrincipal_Load(object sender, EventArgs e)
         {
             txtBuscador.Focus();
@@ -123,14 +124,14 @@ namespace petShop.Views
 
         void calcularTotal()
         {
-            decimal newTotal = 0;
+                decimal newTotal = 0;
 
-            foreach (DataGridViewRow row in dgvDetalleVentas.Rows)
-            {
-                newTotal += decimal.Parse(row.Cells[4].Value.ToString());
-            }
+                foreach (DataGridViewRow row in dgvDetalleVentas.Rows)
+                {
+                    newTotal += decimal.Parse(row.Cells[4].Value.ToString());
+                }
 
-            lblTotalVenta.Text = newTotal.ToString();
+                lblTotalVenta.Text = newTotal.ToString();
         }
 
         void limpiarCamposAlAgregar()
@@ -261,6 +262,36 @@ namespace petShop.Views
         {
             frmCrudProductos crud = new frmCrudProductos();
             crud.ShowDialog();
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            frmCategoriaCrud frm = new frmCategoriaCrud();
+            frm.ShowDialog();
+        }
+
+        private void btnBuscarProdMan_Click(object sender, EventArgs e)
+        {
+            frmListaProductos frm = new frmListaProductos();
+            frm.ShowDialog();
+
+            productos productoSeleccionado = frm.obtenerProducto();
+
+            using (petShopEntities db = new petShopEntities())
+            {
+                productos producto = (from p in db.productos
+                                      where p.idProducto == productoSeleccionado.idProducto
+                                      select p).FirstOrDefault();
+
+                lblIdProducto.Text = producto.idProducto.ToString();
+                lblNombreProducto.Text = producto.nombre;
+                lblStockProducto.Text = producto.stock.ToString();
+                lblPrecioProducto.Text = producto.precio.ToString();
+
+                txtCantidad.Focus();
+
+                productoBuscado = producto;
+            }
         }
     }
 }

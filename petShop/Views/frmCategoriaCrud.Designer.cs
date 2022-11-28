@@ -28,104 +28,223 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.dgvLista = new System.Windows.Forms.DataGridView();
-            this.txtIdProd = new System.Windows.Forms.TextBox();
-            this.txtNombreProd = new System.Windows.Forms.TextBox();
-            this.txtEstadoProd = new System.Windows.Forms.TextBox();
-            this.btnActivarProd = new System.Windows.Forms.Button();
-            this.btnDesactivarProd = new System.Windows.Forms.Button();
-            this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.NOMBRE = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ESTADO = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvLista)).BeginInit();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmCategoriaCrud));
+            this.dgvListaCateg = new System.Windows.Forms.DataGridView();
+            this.txtNombreCateg = new System.Windows.Forms.TextBox();
+            this.btnGuardarNuevaCateg = new System.Windows.Forms.Button();
+            this.btnGuardarCambiosCateg = new System.Windows.Forms.Button();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.label1 = new System.Windows.Forms.Label();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.lblIdCateg = new System.Windows.Forms.Label();
+            this.btnNuevaCateg = new System.Windows.Forms.Button();
+            this.btnEditarCateg = new System.Windows.Forms.Button();
+            this.idCateg = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.nombreCateg = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btnCancelar = new System.Windows.Forms.Button();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvListaCateg)).BeginInit();
+            this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
-            // dgvLista
+            // dgvListaCateg
             // 
-            this.dgvLista.AllowUserToAddRows = false;
-            this.dgvLista.AllowUserToDeleteRows = false;
-            this.dgvLista.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvLista.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.ID,
-            this.NOMBRE,
-            this.ESTADO});
-            this.dgvLista.Location = new System.Drawing.Point(12, 12);
-            this.dgvLista.Name = "dgvLista";
-            this.dgvLista.ReadOnly = true;
-            this.dgvLista.Size = new System.Drawing.Size(354, 239);
-            this.dgvLista.TabIndex = 0;
-            this.dgvLista.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvLista_CellContentClick);
+            this.dgvListaCateg.AllowUserToAddRows = false;
+            this.dgvListaCateg.AllowUserToDeleteRows = false;
+            this.dgvListaCateg.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvListaCateg.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.idCateg,
+            this.nombreCateg});
+            this.dgvListaCateg.Location = new System.Drawing.Point(12, 95);
+            this.dgvListaCateg.Name = "dgvListaCateg";
+            this.dgvListaCateg.ReadOnly = true;
+            this.dgvListaCateg.Size = new System.Drawing.Size(343, 471);
+            this.dgvListaCateg.TabIndex = 0;
+            this.dgvListaCateg.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvListaCategorías_CellClick);
             // 
-            // txtIdProd
+            // txtNombreCateg
             // 
-            this.txtIdProd.Location = new System.Drawing.Point(372, 25);
-            this.txtIdProd.Name = "txtIdProd";
-            this.txtIdProd.Size = new System.Drawing.Size(178, 20);
-            this.txtIdProd.TabIndex = 2;
+            this.txtNombreCateg.Enabled = false;
+            this.txtNombreCateg.Font = new System.Drawing.Font("Microsoft YaHei", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtNombreCateg.Location = new System.Drawing.Point(366, 155);
+            this.txtNombreCateg.Name = "txtNombreCateg";
+            this.txtNombreCateg.Size = new System.Drawing.Size(208, 33);
+            this.txtNombreCateg.TabIndex = 2;
             // 
-            // txtNombreProd
+            // btnGuardarNuevaCateg
             // 
-            this.txtNombreProd.Location = new System.Drawing.Point(372, 65);
-            this.txtNombreProd.Name = "txtNombreProd";
-            this.txtNombreProd.Size = new System.Drawing.Size(178, 20);
-            this.txtNombreProd.TabIndex = 3;
+            this.btnGuardarNuevaCateg.BackColor = System.Drawing.Color.Lime;
+            this.btnGuardarNuevaCateg.Enabled = false;
+            this.btnGuardarNuevaCateg.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnGuardarNuevaCateg.Font = new System.Drawing.Font("Microsoft YaHei", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnGuardarNuevaCateg.Location = new System.Drawing.Point(366, 474);
+            this.btnGuardarNuevaCateg.Name = "btnGuardarNuevaCateg";
+            this.btnGuardarNuevaCateg.Size = new System.Drawing.Size(208, 43);
+            this.btnGuardarNuevaCateg.TabIndex = 5;
+            this.btnGuardarNuevaCateg.Text = "GUARDAR NUEVO";
+            this.btnGuardarNuevaCateg.UseVisualStyleBackColor = false;
+            this.btnGuardarNuevaCateg.Click += new System.EventHandler(this.btnGuardarNuevaCateg_Click);
             // 
-            // txtEstadoProd
+            // btnGuardarCambiosCateg
             // 
-            this.txtEstadoProd.Location = new System.Drawing.Point(372, 101);
-            this.txtEstadoProd.Name = "txtEstadoProd";
-            this.txtEstadoProd.Size = new System.Drawing.Size(178, 20);
-            this.txtEstadoProd.TabIndex = 4;
+            this.btnGuardarCambiosCateg.BackColor = System.Drawing.Color.Lime;
+            this.btnGuardarCambiosCateg.Enabled = false;
+            this.btnGuardarCambiosCateg.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnGuardarCambiosCateg.Font = new System.Drawing.Font("Microsoft YaHei", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnGuardarCambiosCateg.Location = new System.Drawing.Point(366, 523);
+            this.btnGuardarCambiosCateg.Name = "btnGuardarCambiosCateg";
+            this.btnGuardarCambiosCateg.Size = new System.Drawing.Size(208, 43);
+            this.btnGuardarCambiosCateg.TabIndex = 6;
+            this.btnGuardarCambiosCateg.Text = "GUARDAR CAMBIOS";
+            this.btnGuardarCambiosCateg.UseVisualStyleBackColor = false;
+            this.btnGuardarCambiosCateg.Click += new System.EventHandler(this.btnGuardarCambiosCateg_Click);
             // 
-            // btnActivarProd
+            // panel1
             // 
-            this.btnActivarProd.Location = new System.Drawing.Point(372, 128);
-            this.btnActivarProd.Name = "btnActivarProd";
-            this.btnActivarProd.Size = new System.Drawing.Size(178, 43);
-            this.btnActivarProd.TabIndex = 5;
-            this.btnActivarProd.Text = "ACTIVAR";
-            this.btnActivarProd.UseVisualStyleBackColor = true;
-            this.btnActivarProd.Click += new System.EventHandler(this.btnActivarProd_Click);
+            this.panel1.BackColor = System.Drawing.Color.DarkSlateGray;
+            this.panel1.Controls.Add(this.label1);
+            this.panel1.Controls.Add(this.pictureBox1);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel1.Location = new System.Drawing.Point(0, 0);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(591, 89);
+            this.panel1.TabIndex = 7;
             // 
-            // btnDesactivarProd
+            // label1
             // 
-            this.btnDesactivarProd.Location = new System.Drawing.Point(372, 177);
-            this.btnDesactivarProd.Name = "btnDesactivarProd";
-            this.btnDesactivarProd.Size = new System.Drawing.Size(178, 43);
-            this.btnDesactivarProd.TabIndex = 6;
-            this.btnDesactivarProd.Text = "DESACTIVAR";
-            this.btnDesactivarProd.UseVisualStyleBackColor = true;
-            this.btnDesactivarProd.Click += new System.EventHandler(this.btnDesactivarProd_Click);
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft YaHei", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.White;
+            this.label1.Location = new System.Drawing.Point(12, 26);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(404, 36);
+            this.label1.TabIndex = 8;
+            this.label1.Text = "Configuración de Categorías";
             // 
-            // ID
+            // pictureBox1
             // 
-            this.ID.HeaderText = "ID";
-            this.ID.Name = "ID";
+            this.pictureBox1.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+            this.pictureBox1.Location = new System.Drawing.Point(548, 12);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(31, 30);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox1.TabIndex = 9;
+            this.pictureBox1.TabStop = false;
+            this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
             // 
-            // NOMBRE
+            // label2
             // 
-            this.NOMBRE.HeaderText = "NOMBRE";
-            this.NOMBRE.Name = "NOMBRE";
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Microsoft YaHei", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(361, 95);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(44, 26);
+            this.label2.TabIndex = 8;
+            this.label2.Text = "ID: ";
             // 
-            // ESTADO
+            // label3
             // 
-            this.ESTADO.HeaderText = "ESTADO";
-            this.ESTADO.Name = "ESTADO";
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Microsoft YaHei", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(361, 130);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(213, 22);
+            this.label3.TabIndex = 9;
+            this.label3.Text = "Nombre de la categoría: ";
+            // 
+            // lblIdCateg
+            // 
+            this.lblIdCateg.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.lblIdCateg.Font = new System.Drawing.Font("Microsoft YaHei", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblIdCateg.Location = new System.Drawing.Point(411, 98);
+            this.lblIdCateg.Name = "lblIdCateg";
+            this.lblIdCateg.Size = new System.Drawing.Size(163, 22);
+            this.lblIdCateg.TabIndex = 10;
+            this.lblIdCateg.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // btnNuevaCateg
+            // 
+            this.btnNuevaCateg.BackColor = System.Drawing.Color.Lime;
+            this.btnNuevaCateg.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnNuevaCateg.Font = new System.Drawing.Font("Microsoft YaHei", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnNuevaCateg.Location = new System.Drawing.Point(366, 223);
+            this.btnNuevaCateg.Name = "btnNuevaCateg";
+            this.btnNuevaCateg.Size = new System.Drawing.Size(209, 43);
+            this.btnNuevaCateg.TabIndex = 11;
+            this.btnNuevaCateg.Text = "NUEVA CATEGORÍA";
+            this.btnNuevaCateg.UseVisualStyleBackColor = false;
+            this.btnNuevaCateg.Click += new System.EventHandler(this.btnNuevaCateg_Click);
+            // 
+            // btnEditarCateg
+            // 
+            this.btnEditarCateg.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.btnEditarCateg.Enabled = false;
+            this.btnEditarCateg.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnEditarCateg.Font = new System.Drawing.Font("Microsoft YaHei", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnEditarCateg.Location = new System.Drawing.Point(366, 272);
+            this.btnEditarCateg.Name = "btnEditarCateg";
+            this.btnEditarCateg.Size = new System.Drawing.Size(209, 43);
+            this.btnEditarCateg.TabIndex = 12;
+            this.btnEditarCateg.Text = "EDITAR";
+            this.btnEditarCateg.UseVisualStyleBackColor = false;
+            this.btnEditarCateg.Click += new System.EventHandler(this.btnEditarCateg_Click);
+            // 
+            // idCateg
+            // 
+            this.idCateg.HeaderText = "ID";
+            this.idCateg.Name = "idCateg";
+            this.idCateg.ReadOnly = true;
+            // 
+            // nombreCateg
+            // 
+            this.nombreCateg.HeaderText = "NOMBRE";
+            this.nombreCateg.Name = "nombreCateg";
+            this.nombreCateg.ReadOnly = true;
+            this.nombreCateg.Width = 200;
+            // 
+            // btnCancelar
+            // 
+            this.btnCancelar.BackColor = System.Drawing.Color.Red;
+            this.btnCancelar.Enabled = false;
+            this.btnCancelar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnCancelar.Font = new System.Drawing.Font("Microsoft YaHei", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCancelar.ForeColor = System.Drawing.Color.Black;
+            this.btnCancelar.Location = new System.Drawing.Point(365, 425);
+            this.btnCancelar.Name = "btnCancelar";
+            this.btnCancelar.Size = new System.Drawing.Size(209, 43);
+            this.btnCancelar.TabIndex = 13;
+            this.btnCancelar.Text = "CANCELAR";
+            this.btnCancelar.UseVisualStyleBackColor = false;
+            this.btnCancelar.Click += new System.EventHandler(this.button1_Click);
             // 
             // frmCategoriaCrud
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(962, 582);
-            this.Controls.Add(this.btnDesactivarProd);
-            this.Controls.Add(this.btnActivarProd);
-            this.Controls.Add(this.txtEstadoProd);
-            this.Controls.Add(this.txtNombreProd);
-            this.Controls.Add(this.txtIdProd);
-            this.Controls.Add(this.dgvLista);
+            this.BackColor = System.Drawing.Color.White;
+            this.ClientSize = new System.Drawing.Size(591, 578);
+            this.Controls.Add(this.btnCancelar);
+            this.Controls.Add(this.btnEditarCateg);
+            this.Controls.Add(this.btnNuevaCateg);
+            this.Controls.Add(this.lblIdCateg);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.panel1);
+            this.Controls.Add(this.btnGuardarCambiosCateg);
+            this.Controls.Add(this.btnGuardarNuevaCateg);
+            this.Controls.Add(this.txtNombreCateg);
+            this.Controls.Add(this.dgvListaCateg);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "frmCategoriaCrud";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "frmCategoriaCrud";
-            ((System.ComponentModel.ISupportInitialize)(this.dgvLista)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvListaCateg)).EndInit();
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -133,14 +252,20 @@
 
         #endregion
 
-        private System.Windows.Forms.DataGridView dgvLista;
-        private System.Windows.Forms.TextBox txtIdProd;
-        private System.Windows.Forms.TextBox txtNombreProd;
-        private System.Windows.Forms.TextBox txtEstadoProd;
-        private System.Windows.Forms.Button btnActivarProd;
-        private System.Windows.Forms.Button btnDesactivarProd;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ID;
-        private System.Windows.Forms.DataGridViewTextBoxColumn NOMBRE;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ESTADO;
+        private System.Windows.Forms.DataGridView dgvListaCateg;
+        private System.Windows.Forms.TextBox txtNombreCateg;
+        private System.Windows.Forms.Button btnGuardarNuevaCateg;
+        private System.Windows.Forms.Button btnGuardarCambiosCateg;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label lblIdCateg;
+        private System.Windows.Forms.Button btnNuevaCateg;
+        private System.Windows.Forms.Button btnEditarCateg;
+        private System.Windows.Forms.DataGridViewTextBoxColumn idCateg;
+        private System.Windows.Forms.DataGridViewTextBoxColumn nombreCateg;
+        private System.Windows.Forms.Button btnCancelar;
     }
 }

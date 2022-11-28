@@ -117,13 +117,53 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <metadata name="idCateg.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+  <metadata name="idProd.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
-  <metadata name="nombreCateg.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+  <metadata name="nombreProd.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="stockProd.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="precioProd.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="seleccionar.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="seleccionar.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        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
+        omvqQ4r/AMil3ndFgNLvAAAAAElFTkSuQmCC
+</value>
+  </data>
   <data name="pictureBox1.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAB
@@ -158,10 +198,4 @@
         dkPwvsjeT9RqHiqauwsjFPoXqd9tjtZu1vIAAAAASUVORK5CYII=
 </value>
   </data>
-  <metadata name="idCateg.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="nombreCateg.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
 </root>
