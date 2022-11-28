@@ -118,7 +118,6 @@ namespace petShop.Views
                                 );
 
                 calcularTotal();
-
             }
         }
 
@@ -223,7 +222,7 @@ namespace petShop.Views
         {
             dgvDetalleVentas.Rows.Remove(dgvDetalleVentas.CurrentRow);
             calcularTotal();
-            this.Enabled = false;
+            btnQuitarProd.Enabled = false;
         }
 
         private void dgvDetalleVentas_CellClick(object sender, DataGridViewCellEventArgs e)
