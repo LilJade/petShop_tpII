@@ -256,5 +256,11 @@ namespace petShop.Views
                 return;
             }
         }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            frmCrudProductos crud = new frmCrudProductos();
+            crud.ShowDialog();
+        }
     }
 }
