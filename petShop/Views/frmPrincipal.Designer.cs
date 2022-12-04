@@ -76,6 +76,7 @@
             this.panel3 = new System.Windows.Forms.Panel();
             this.lblNombreUsuario = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
+            this.btnCancelarVenta = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnMinimizar)).BeginInit();
@@ -157,6 +158,7 @@
             this.panel2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel2.Controls.Add(this.btnCancelarVenta);
             this.panel2.Controls.Add(this.label11);
             this.panel2.Controls.Add(this.lblProdQuitar);
             this.panel2.Controls.Add(this.btnQuitarProd);
@@ -175,7 +177,7 @@
             this.label11.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.label11.AutoSize = true;
             this.label11.Font = new System.Drawing.Font("Microsoft YaHei", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label11.Location = new System.Drawing.Point(740, 648);
+            this.label11.Location = new System.Drawing.Point(521, 648);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(91, 22);
             this.label11.TabIndex = 13;
@@ -183,11 +185,10 @@
             // 
             // lblProdQuitar
             // 
-            this.lblProdQuitar.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblProdQuitar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.lblProdQuitar.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lblProdQuitar.Font = new System.Drawing.Font("Microsoft YaHei", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblProdQuitar.Location = new System.Drawing.Point(837, 641);
+            this.lblProdQuitar.Location = new System.Drawing.Point(618, 641);
             this.lblProdQuitar.Name = "lblProdQuitar";
             this.lblProdQuitar.Size = new System.Drawing.Size(317, 35);
             this.lblProdQuitar.TabIndex = 14;
@@ -203,7 +204,7 @@
             this.btnQuitarProd.ForeColor = System.Drawing.Color.White;
             this.btnQuitarProd.Location = new System.Drawing.Point(3, 641);
             this.btnQuitarProd.Name = "btnQuitarProd";
-            this.btnQuitarProd.Size = new System.Drawing.Size(731, 35);
+            this.btnQuitarProd.Size = new System.Drawing.Size(512, 35);
             this.btnQuitarProd.TabIndex = 13;
             this.btnQuitarProd.Text = "QUITAR PRODUCTO DE LA LISTA";
             this.btnQuitarProd.UseVisualStyleBackColor = false;
@@ -675,6 +676,21 @@
             this.label9.Text = "BIENVENIDO";
             this.label9.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // btnCancelarVenta
+            // 
+            this.btnCancelarVenta.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnCancelarVenta.BackColor = System.Drawing.Color.Red;
+            this.btnCancelarVenta.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnCancelarVenta.Font = new System.Drawing.Font("Microsoft YaHei", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCancelarVenta.ForeColor = System.Drawing.Color.White;
+            this.btnCancelarVenta.Location = new System.Drawing.Point(945, 641);
+            this.btnCancelarVenta.Name = "btnCancelarVenta";
+            this.btnCancelarVenta.Size = new System.Drawing.Size(211, 35);
+            this.btnCancelarVenta.TabIndex = 21;
+            this.btnCancelarVenta.Text = "CANCELAR VENTA";
+            this.btnCancelarVenta.UseVisualStyleBackColor = false;
+            this.btnCancelarVenta.Click += new System.EventHandler(this.btnCancelarVenta_Click);
+            // 
             // frmPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -759,5 +775,6 @@
         public System.Windows.Forms.Label lblStockProducto;
         public System.Windows.Forms.Label lblNombreProducto;
         public System.Windows.Forms.Label lblPrecioProducto;
+        private System.Windows.Forms.Button btnCancelarVenta;
     }
 }

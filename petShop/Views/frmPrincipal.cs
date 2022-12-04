@@ -25,6 +25,14 @@ namespace petShop.Views
         }
 
         productos productoBuscado = new productos();
+
+        void LimpiarVenta()
+        {
+            dgvDetalleVentas.Rows.Clear();
+            productoBuscado = new productos();
+            lblTotalVenta.Text = "";
+
+        }
         private void txtBuscador_KeyPress(object sender, KeyPressEventArgs e)
         {
             if ((int)e.KeyChar == (int)Keys.Enter)
@@ -201,7 +209,18 @@ namespace petShop.Views
                     db.Entry(producto);
                     db.SaveChanges();
                 }
+
+
             }
+
+            LimpiarVenta();
+            limpiarCamposAlAgregar();
+
+            MessageBox.Show(
+                                "Venta realizada con exito!",
+                                "VENTA REGISTRADA",
+                                MessageBoxButtons.OK,
+                                MessageBoxIcon.Information);
         }
 
         private void btnCerrar_Click(object sender, EventArgs e)
@@ -224,6 +243,7 @@ namespace petShop.Views
             dgvDetalleVentas.Rows.Remove(dgvDetalleVentas.CurrentRow);
             calcularTotal();
             btnQuitarProd.Enabled = false;
+            lblProdQuitar.Text = "";
         }
 
         private void dgvDetalleVentas_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -292,6 +312,12 @@ namespace petShop.Views
 
                 productoBuscado = producto;
             }
+        }
+
+        private void btnCancelarVenta_Click(object sender, EventArgs e)
+        {
+            LimpiarVenta();
+            limpiarCamposAlAgregar();
         }
     }
 }

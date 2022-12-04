@@ -21,10 +21,10 @@ namespace petShop.Views
 
         void selectProductosActivos()
         {
+            txtBuscarProd.Focus();
             dgvListaProds.Rows.Clear();
 
             using (petShopEntities db = new petShopEntities())
-
             {
                 var query = from p in db.productos
                             where p.estado == 1
@@ -69,6 +69,33 @@ namespace petShop.Views
             return productoSeleccionado;
         }
 
-        
+        private void txtBuscarProd_TextChanged(object sender, EventArgs e)
+        {
+            if (txtBuscarProd.Text != "")
+            {
+                dgvListaProds.CurrentCell = null;
+
+                foreach (DataGridViewRow r in dgvListaProds.Rows)
+                {
+                    r.Visible = false;
+                }
+
+                foreach (DataGridViewRow r in dgvListaProds.Rows)
+                {
+                    foreach (DataGridViewCell c in r.Cells)
+                    {
+                        if ((c.Value.ToString().ToUpper()).IndexOf(txtBuscarProd.Text.ToUpper()) == 0)
+                        {
+                            r.Visible = true;
+                            break;
+                        }
+                    }
+                }
+            }
+            else
+            {
+                selectProductosActivos();
+            }
+        }
     }
 }
